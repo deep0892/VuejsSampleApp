@@ -7,8 +7,10 @@ Vue.use(VueResource);
 
 Vue.http.options.root = config.firebaseUrl;
 Vue.http.interceptors.push((request, next) => {
-    console.log('interceptors called');
-    next();
+    console.log('intercept request');
+    next((response) => {
+        console.log('intercept response');
+    });
 });
 
 new Vue({
