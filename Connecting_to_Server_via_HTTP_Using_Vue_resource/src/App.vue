@@ -11,14 +11,21 @@
           <label for="">Mail</label>
           <input type="text" class="form-control" v-model="user.email" />
         </div>
-        <button class="btn tbn-primary" @click="submit">Submit</button>
+        <button class="btn btn-primary" @click="submit">Submit</button>
+        <hr />
+        <button class="btn btn-primary" @click="fetchData">Get Data</button>
+        <br />
+        <ul class="list-group">
+          <li class="list-group-item" v-for="u in users" :key="u.username">
+            {{ u.username }} - {{ u.email }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import FIREBASE_URL from '../config';
 export default {
   data() {
     return {
@@ -26,16 +33,31 @@ export default {
         username: '',
         email: '',
       },
+      users: [],
     };
   },
   methods: {
     submit() {
       this.$http
-        .post(FIREBASE_URL.firebaseUrl, this.user)
+        .post('', this.user)
         .then((response) => {
           console.log(response);
         })
         .catch((err) => console.log(err));
+    },
+    fetchData() {
+      this.$http
+        .get('')
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          const resultArray = [];
+          for (let key in data) {
+            resultArray.push(data[key]);
+          }
+          this.users = resultArray;
+        });
     },
   },
 };
