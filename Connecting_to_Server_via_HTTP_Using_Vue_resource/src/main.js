@@ -6,6 +6,10 @@ import config from '../config';
 Vue.use(VueResource);
 
 Vue.http.options.root = config.firebaseUrl;
+Vue.http.interceptors.push((request, next) => {
+    console.log('interceptors called');
+    next();
+});
 
 new Vue({
     el: "#app",
