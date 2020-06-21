@@ -5,7 +5,9 @@
         <h1>Routing</h1>
         <hr />
         <router-view name="header-top"></router-view>
-        <router-view></router-view>
+        <transition name="slide">
+          <router-view></router-view>
+        </transition>
         <router-view name="header-bottom"></router-view>
       </div>
     </div>
@@ -13,12 +15,12 @@
 </template>
 
 <script>
-// import Header from './components/Header.vue';
-// export default {
-//   components: {
-//     appHeader: Header,
-//   },
-// };
+import Header from './components/Header.vue';
+export default {
+  components: {
+    appHeader: Header,
+  },
+};
 </script>
 
 <style></style>
