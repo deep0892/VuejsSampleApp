@@ -9,8 +9,5 @@
     <router-link to="/user/2" tag="li" active-class="active"
       ><a>User2</a></router-link
     >
-    <router-link to="/user/:id" tag="li" active-class="active" props="true"
-      ><a>User2</a></router-link
-    >
   </ul>
 </template>
