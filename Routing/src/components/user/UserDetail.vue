@@ -20,5 +20,16 @@ export default {
       },
     };
   },
+  beforeRouteEnter(to, from, next) {
+    //   we can check for rights here if the user in authorized to access this route/component
+    // We dont have access to any component properties,
+    // Only have access to the route coming from, route we are going to and the next function
+    console.log('before route enter for a specific route');
+    if (true) {
+      next();
+    } else {
+      next(false);
+    }
+  },
 };
 </script>
